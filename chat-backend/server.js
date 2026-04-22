@@ -6,12 +6,12 @@ const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://nandani2203.github.io" }));
 app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://nandani2203.github.io",
     methods: ["GET", "POST"],
   },
 });
