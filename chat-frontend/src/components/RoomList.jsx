@@ -19,8 +19,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { io } from "socket.io-client";
+import BACKEND_URL from "../config";
 
-const socket = io("http://localhost:4000");
+const socket = io(BACKEND_URL);
 
 const RoomList = ({ user, onJoinRoom }) => {
   const [rooms, setRooms] = useState([]);
@@ -32,7 +33,7 @@ const RoomList = ({ user, onJoinRoom }) => {
   // Fetch rooms — REST API GET /rooms
   const fetchRooms = async () => {
     try {
-      const res = await fetch("http://localhost:4000/rooms");
+      const res = await fetch(`${BACKEND_URL}/rooms`);
       const data = await res.json();
       setRooms(data);
     } catch {
@@ -62,7 +63,7 @@ const RoomList = ({ user, onJoinRoom }) => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:4000/rooms", {
+      const res = await fetch(`${BACKEND_URL}/rooms`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

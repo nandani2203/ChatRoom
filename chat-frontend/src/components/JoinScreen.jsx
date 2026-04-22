@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BACKEND_URL from "../config";
 import {
   Box,
   Button,
@@ -25,7 +26,7 @@ const JoinScreen = ({ onJoin }) => {
 
     try {
       // REST API call — POST /users/join
-      const res = await fetch("http://localhost:4000/users/join", {
+      const res = await fetch(`${BACKEND_URL}/users/join`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: username.trim() }),
